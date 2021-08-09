@@ -1,0 +1,232 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "$id": "http://example.com/example.json",
+    "type": "object",
+    "required": [
+        "accruals"
+    ],
+    "properties": {
+        "accruals": {
+            "$id": "#/properties/accruals",
+            "type": "array",
+            "additionalItems": true,
+            "items": {
+                "$id": "#/properties/accruals/items",
+                "anyOf": [
+                    {
+                        "$id": "#/properties/accruals/items/anyOf/0",
+                        "required": [
+                            "periodBill",
+                            "name",
+                            "sum",
+                            "services"
+                        ],
+                        "maxProperties": 5,
+                        "minProperties": 4,
+                        "type": "object",
+                        "properties": {
+                            "periodBill": {
+                                "$id": "#/properties/accruals/items/anyOf/0/properties/periodBill",
+                                "pattern": "^\\d\\d\\d\\d-\\d\\d$",
+                                "type": "string"
+                            },
+                            "name": {
+                                "$id": "#/properties/accruals/items/anyOf/0/properties/name",
+                                "type": "string"
+                            },
+                            "id": {
+                                "$id": "#/properties/accruals/items/anyOf/0/properties/id",
+                                "pattern": "\\d+",
+                                "type": "string"
+                            },
+                            "sum": {
+                                "$id": "#/properties/accruals/items/anyOf/0/properties/sum",
+                                "pattern": "(^\\d+\\.\\d\\d$)|(^-\\d+\\.\\d\\d$)",
+                                "type": "string"
+                            },
+                            "services": {
+                                "$id": "#/properties/accruals/items/anyOf/0/properties/services",
+                                "type": "array",
+                                "additionalItems": true,
+                                "items": {
+                                    "$id": "#/properties/accruals/items/anyOf/0/properties/services/items",
+                                    "anyOf": [
+                                        {
+                                            "$id": "#/properties/accruals/items/anyOf/0/properties/services/items/anyOf/0",
+                                            "required": [
+                                                "serviceName",
+                                                
+                                                "sum",
+                                                "groupDetailsAccrual"
+                                            ],
+                                            "maxProperties": 5,
+                                            "minProperties": 3,
+                                            "type": "object",
+                                            "properties": {
+                                                "serviceName": {
+                                                    "$id": "#/properties/accruals/items/anyOf/0/properties/services/items/anyOf/0/properties/serviceName",
+                                                    "pattern": "",
+                                                    "type": "string"
+                                                },
+                                                "amount": {
+                                                    "$id": "#/properties/accruals/items/anyOf/0/properties/services/items/anyOf/0/properties/amount",
+                                                    "pattern": "(^\\d+$)|^([-]{1}$)",
+                                                    "type": "number"
+                                                },
+                                                "unitMeasure": {
+                                                    "$id": "#/properties/accruals/items/anyOf/0/properties/services/items/anyOf/0/properties/unitMeasure",
+                                                    "type": "string"
+                                                },
+                                                "sum": {
+                                                    "$id": "#/properties/accruals/items/anyOf/0/properties/services/items/anyOf/0/properties/sum",
+                                                    "pattern": "(^\\d+\\.\\d\\d$)|(^-\\d+\\.\\d\\d$)",
+                                                    "type": "string"
+                                                },
+                                                "groupDetailsAccrual": {
+                                                    "$id": "#/properties/accruals/items/anyOf/0/properties/services/items/anyOf/0/properties/groupDetailsAccrual",
+                                                    "type": "array",
+                                                    "additionalItems": true,
+                                                    "items": {
+                                                        "$id": "#/properties/accruals/items/anyOf/0/properties/services/items/anyOf/0/properties/groupDetailsAccrual/items",
+                                                        "anyOf": [
+                                                            {
+                                                                "$id": "#/properties/accruals/items/anyOf/0/properties/services/items/anyOf/0/properties/groupDetailsAccrual/items/anyOf/0",
+                                                                "required": [
+                                                                    "id",
+                                                                    "name",
+                                                                    "typeDetail",
+                                                                    "sum"
+                                                                ],
+                                                                "type": "object",
+                                                                        
+                                                               
+
+                                                            "allOf": [
+                                                                    {
+                                                                    "if": {"properties": {"typeDetail":{"const":"ACCRUAL_CONST"}}},
+                                                                    "then":{"required":["amount","unitMeasure","dateStart","dateEnd"]}
+                                                                    },
+                                                                    {
+                                                                    "if": {"properties": {"typeDetail":{"const":"ACCRUAL_ONCE"}}},
+                                                                    "then":{"required":["amount","unitMeasure","dateStart","dateEnd"]}
+                                                                    },
+                                                                    {
+                                                                    "if": {"properties": {"typeDetail":{"const":"ACCRUAL_NULL"}}},
+                                                                    "then":{"required":["amount","unitMeasure","dateStart","dateEnd"]}
+                                                                    },
+                                                                    {
+                                                                   "if": {"properties": {"typeDetail":{"const":"ACCRUAL_CORRECTION"}}},
+                                                                    "then":{"required":["descriptionCorr"]}
+                                                                    },
+                                                                    {
+                                                                    "if": {"properties": {"typeDetail":{"const":"ACCRUAL_INSTALLMENT"}}},
+                                                                    "then":{"required":["typeService"]}
+                                                                    }
+                                                            ],
+
+                                                                "properties": {
+                                                                    "id": {
+                                                                        "$id": "#/properties/accruals/items/anyOf/0/properties/services/items/anyOf/0/properties/groupDetailsAccrual/items/anyOf/0/properties/id",
+                                                                        "type": "string"
+                                                                    },
+                                                                    "name": {
+                                                                        "$id": "#/properties/accruals/items/anyOf/0/properties/services/items/anyOf/0/properties/groupDetailsAccrual/items/anyOf/0/properties/name",
+                                                                       
+                                                                        "type": "string"
+                                                                    },
+                                                                    "typeDetail": {
+                                                                        "$id": "#/properties/accruals/items/anyOf/0/properties/services/items/anyOf/0/properties/groupDetailsAccrual/items/anyOf/0/properties/typeDetail",
+                                                                        "pattern": "(^ACCRUAL_CONST$)|(^ACCRUAL_ONCE$)|(^ACCRUAL_CORRECTION$)|(^ACCRUAL_INSTALLMENT$)|(^ACCRUAL_INSTALLMENT_DEBT$)|(^ACCRUAL_NULL$)",
+                                                                        "enum": ["ACCRUAL_CONST", "ACCRUAL_ONCE", "ACCRUAL_CORRECTION","ACCRUAL_INSTALLMENT","ACCRUAL_INSTALLMENT_DEBT","ACCRUAL_NULL"],
+                                                                        "type": "string"
+                                                                    },
+                                                                    "sum": {
+                                                                        "$id": "#/properties/accruals/items/anyOf/0/properties/services/items/anyOf/0/properties/groupDetailsAccrual/items/anyOf/0/properties/sum",
+                                                                        "pattern": "(^\\d+\\.\\d\\d$)|(^-\\d+\\.\\d\\d$)",
+                                                                        "type": "string"
+                                                                    },
+                                                                    "typeService": {
+                                                                        "$id": "#/properties/accruals/items/anyOf/0/properties/services/items/anyOf/0/properties/groupDetailsAccrual/items/anyOf/0/properties/typeService",
+                                                                        "enum": ["constantType", "singleType", "installment",null],
+                                                            
+                                                                        "type": [
+                                                                            "string",
+                                                                            "null"
+                                                                        ]
+                                                                    },
+                                                                    "amount": {
+                                                                        "$id": "#/properties/accruals/items/anyOf/0/properties/services/items/anyOf/0/properties/groupDetailsAccrual/items/anyOf/0/properties/amount",
+                                                                        "type": "number"
+                                                                    },
+                                                                    "unitMeasure": {
+                                                                        "$id": "#/properties/accruals/items/anyOf/0/properties/services/items/anyOf/0/properties/groupDetailsAccrual/items/anyOf/0/properties/unitMeasure",
+                                                                        "type": "string"
+                                                                    },
+                                                                    "dateStart": {
+                                                                        "$id": "#/properties/accruals/items/anyOf/0/properties/services/items/anyOf/0/properties/groupDetailsAccrual/items/anyOf/0/properties/dateStart",
+                                                                        "pattern": "^\\d{4}-\\d\\d-\\d\\d[T]\\d\\d\\:\\d\\d\\:\\d\\d[+]\\d\\d\\:\\d\\d$",
+                                                                        "type": "string"
+                                                                    },
+                                                                    "dateEnd": {
+                                                                        "$id": "#/properties/accruals/items/anyOf/0/properties/services/items/anyOf/0/properties/groupDetailsAccrual/items/anyOf/0/properties/dateEnd",
+                                                                        "pattern": "^\\d{4}-\\d\\d-\\d\\d[T]\\d\\d\\:\\d\\d\\:\\d\\d[+]\\d\\d\\:\\d\\d$",
+                                                                        "type": "string"
+                                                                    },
+                                                                    "descriptionCorr": {
+                                                                        "$id": "#/properties/accruals/items/anyOf/0/properties/services/items/anyOf/0/properties/groupDetailsAccrual/items/anyOf/0/properties/descriptionCorr",
+                                                                        "required": [
+                                                                            "periodCorr",
+                                                                            "foundation",
+                                                                            "author",
+                                                                            "dateCorr"
+                                                                        ],
+                                                                        "maxProperties": 4,
+                                                                        "minProperties": 3,
+                                                                        "type": "object",
+                                                                        "properties": {
+                                                                            "periodCorr": {
+                                                                                "$id": "#/properties/accruals/items/anyOf/0/properties/services/items/anyOf/0/properties/groupDetailsAccrual/items/anyOf/0/properties/descriptionCorr/properties/periodCorr",
+                                                                                "pattern": "^(Январь|Февраль|Март|Апрель|Май|Июнь|Июль|Август|Сентябрь|Октябрь|Ноябрь|Декабрь) (\\d\\d\\d\\d)$",
+                                                                                "type": "string"
+                                                                            },
+                                                                            "foundation": {
+                                                                                "$id": "#/properties/accruals/items/anyOf/0/properties/services/items/anyOf/0/properties/groupDetailsAccrual/items/anyOf/0/properties/descriptionCorr/properties/foundation",
+                                                                                "type": "string"
+                                                                            },
+                                                                            "foundation": {
+                                                                                "$id": "#/properties/accruals/items/anyOf/0/properties/services/items/anyOf/0/properties/groupDetailsAccrual/items/anyOf/0/properties/descriptionCorr/properties/foundation",
+                                                                                "type": "string"
+                                                                            },
+                                                                            "author": {
+                                                                                "$id": "#/properties/accruals/items/anyOf/0/properties/services/items/anyOf/0/properties/groupDetailsAccrual/items/anyOf/0/properties/descriptionCorr/properties/author",
+                                                                                "type": "string"
+                                                                            },
+                                                                            "dateCorr": {
+                                                                                "$id": "#/properties/accruals/items/anyOf/0/properties/services/items/anyOf/0/properties/groupDetailsAccrual/items/anyOf/0/properties/descriptionCorr/properties/dateCorr",
+                                                                                "pattern": "^\\d{4}-\\d\\d-\\d\\d[T]\\d\\d\\:\\d\\d\\:\\d\\d[+]\\d\\d\\:\\d\\d$",
+                                                                                "type": "string"
+                                                                            }
+                                                                        },
+                                                                        "additionalProperties": false
+                                                                    }
+                                                                },
+                                                                "additionalProperties": false
+                                                            }
+                                                        ]
+                                                    }
+                                                }
+                                            },
+                                            "additionalProperties": false
+                                        }
+                                    ]
+                                }
+                            }
+                        },
+                        "additionalProperties": true
+                    }
+                ]
+            }
+        }
+    },
+    "additionalProperties": false
+}

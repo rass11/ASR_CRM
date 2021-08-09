@@ -1,0 +1,54 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "$id": "http://example.com/example.json",
+    "type": "object",
+"minProperties": 2,
+"maxProperties": 2,
+    "required": [
+        "finalPaymentValue",
+        "marketingCamp"
+    ],
+
+    "properties": {
+        "finalPaymentValue": {
+            "$id": "#/properties/finalPaymentValue",
+            "pattern": "(^\\d+\\.\\d\\d$)|(^-\\d+\\.\\d\\d$)",
+            "type": "string"
+        },
+        "marketingCamp": {
+            "$id": "#/properties/marketingCamp",
+            "type": "array",
+            "additionalItems": true,
+            "items": {
+                "$id": "#/properties/marketingCamp/items",
+                "anyOf": [
+                    {
+                        "$id": "#/properties/marketingCamp/items/anyOf/0",
+                        "required": [
+                            "campName","campDate"
+                        ],
+                        "maxProperties": 2,
+                        "minProperties": 2,
+                        "type": "object",
+                        "properties": {
+                            "campName": {
+                                "$id": "#/properties/marketingCamp/items/anyOf/0/properties/campName",
+                                "type": "string"
+                            },
+                            "campDate": {
+                                "$id": "#/properties/marketingCamp/items/anyOf/0/properties/campDate",
+                                "pattern": "^\\d\\d\\d\\d-\\d\\d-\\d\\d$",
+                                "type": [
+                                    "string",
+                                    "null"
+                                ]
+                            }
+                        },
+                        "additionalProperties": false
+                    }
+                ]
+            }
+        }
+    },
+    "additionalProperties": false
+}

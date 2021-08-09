@@ -1,0 +1,104 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "$id": "http://example.com/example.json",
+    "type": "object",
+    "required": [
+        "calculations",
+        "totalAccrued",
+        "totalPaid"
+    ],
+    "properties": {
+        "calculations": {
+            "$id": "#/properties/calculations",
+            "type": "array",
+            "additionalItems": true,
+            "items": {
+                "$id": "#/properties/calculations/items",
+                "anyOf": [
+                    {
+                        "$id": "#/properties/calculations/items/anyOf/0",
+                        "maxProperties": 9,
+                        "minProperties": 9,
+                        "required": [
+                            "periodBill",
+                            "totalSum",
+                            "saldoIn",
+                            "saldoOut",
+                            "accruedFull",
+                            "accrued",
+                            "paid",
+                            "penalties",
+                            "prepayment"
+                        ],
+                        "type": "object",
+                        "properties": {
+                            "periodBill": {
+                                "$id": "#/properties/calculations/items/anyOf/0/properties/periodBill",
+                                "pattern": "^\\d\\d\\d\\d-\\d\\d$",
+                                "type": "string"
+                            },
+                            "totalSum": {
+                                "$id": "#/properties/calculations/items/anyOf/0/properties/totalSum",
+                                "pattern": "(^\\d+\\.\\d\\d$)|(^-\\d+\\.\\d\\d$)",
+                                "type": [
+                                    "string",
+                                    "null"
+                                ]
+                            },
+                            "saldoIn": {
+                                "$id": "#/properties/calculations/items/anyOf/0/properties/saldoIn",
+                                "pattern": "(^\\d+\\.\\d\\d$)|(^-\\d+\\.\\d\\d$)",
+                                "type": "string"
+                            },
+                            "saldoOut": {
+                                "$id": "#/properties/calculations/items/anyOf/0/properties/saldoOut",
+                                "pattern": "(^\\d+\\.\\d\\d$)|(^-\\d+\\.\\d\\d$)",
+                                "type": "string"
+                            },
+                            "accruedFull": {
+                                "$id": "#/properties/calculations/items/anyOf/0/properties/accruedFull",
+                                "pattern": "(^\\d+\\.\\d\\d$)|(^-\\d+\\.\\d\\d$)",
+                                "type": "string"
+                            },
+                            "accrued": {
+                                "$id": "#/properties/calculations/items/anyOf/0/properties/accrued",
+                                "pattern": "(^\\d+\\.\\d\\d$)|(^-\\d+\\.\\d\\d$)",
+                                "type": "string"
+                            },
+                            "paid": {
+                                "$id": "#/properties/calculations/items/anyOf/0/properties/paid",
+                                "pattern": "(^\\d+\\.\\d\\d$)|(^-\\d+\\.\\d\\d$)",
+                                "type": "string"
+                            },
+                            "penalties": {
+                                "$id": "#/properties/calculations/items/anyOf/0/properties/penalties",
+                                "pattern": "(^\\d+\\.\\d\\d$)|(^-\\d+\\.\\d\\d$)",
+                                "type": "string"
+                            },
+                            "prepayment": {
+                                "$id": "#/properties/calculations/items/anyOf/0/properties/prepayment",
+                                "pattern": "(^\\d+\\.\\d\\d$)",
+                                "type": [
+                                    "string",
+                                    "null"
+                                ]
+                            }
+                        },
+                        "additionalProperties": false
+                    }
+                ]
+            }
+        },
+        "totalAccrued": {
+            "$id": "#/properties/totalAccrued",
+            "pattern": "(^\\d+\\.\\d\\d$)|(^-\\d+\\.\\d\\d$)",
+            "type": "string"
+        },
+        "totalPaid": {
+            "$id": "#/properties/totalPaid",
+            "pattern": "(^\\d+\\.\\d\\d$)|(^-\\d+\\.\\d\\d$)",
+            "type": "string"
+        }
+    },
+    "additionalProperties": false
+}

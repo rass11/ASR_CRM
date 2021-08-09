@@ -1,0 +1,7 @@
+7.479848"2952893953": {"finalPaymentValue": "-10623.42"},
+6.825895"218297141": {"finalPaymentValue": "-6740.56"},
+2.860774"4246339786": {"finalPaymentValue": "-86.13"},
+1.112818"4290189748": {"finalPaymentValue": "6.29"},
+2.992618"218958161": {"finalPaymentValue": "0.00"},
+1.187022"4290189307": {"finalPaymentValue": "-5190.38"},
+0.618319"4499330664": {"finalPaymentValue": "-3922.15"},

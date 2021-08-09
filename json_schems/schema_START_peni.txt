@@ -1,0 +1,261 @@
+"$schema": "http://json-schema.org/draft-07/schema",
+    "$id": "http://example.com/example.json",
+    "type": "object",
+    "required": [
+        "totalAccruedPenalties",
+        "totalPaidPenalties",
+        "penalties"
+    ],
+    "properties": {
+        "totalAccruedPenalties": {
+            "$id": "#/properties/totalAccruedPenalties",
+            "pattern": "(^\\d+\\.\\d\\d$)|(^-\\d+\\.\\d\\d$)",
+            "type": "string"
+        },
+        "totalPaidPenalties": {
+            "$id": "#/properties/totalPaidPenalties",
+            "pattern": "(^\\d+\\.\\d\\d$)|(^-\\d+\\.\\d\\d$)",
+            "type": "string"
+        },
+        "penalties": {
+            "$id": "#/properties/penalties",
+            "type": "array",
+            "additionalItems": true,
+            "items": {
+                "$id": "#/properties/penalties/items",
+                "anyOf": [
+                    {
+                        "$id": "#/properties/penalties/items/anyOf/0",
+                        "maxProperties": 6,
+                        "required": [
+                            "period",
+                            "saldoIn",
+                            "saldoOut",
+                            "accrued",
+                            "paid",
+                            "detailPenalties"
+                        ],
+                        "minProperties": 6,
+                        "type": "object",
+                        "properties": {
+                            "period": {
+                                "$id": "#/properties/penalties/items/anyOf/0/properties/period",
+                                "pattern": "^\\d\\d\\d\\d-\\d\\d$",
+                                "type": "string"
+                            },
+                            "saldoIn": {
+                                "$id": "#/properties/penalties/items/anyOf/0/properties/saldoIn",
+                                "pattern": "(^\\d+\\.\\d\\d$)|(^-\\d+\\.\\d\\d$)",
+                                "type": "string"
+                            },
+                            "saldoOut": {
+                                "$id": "#/properties/penalties/items/anyOf/0/properties/saldoOut",
+                                "pattern": "(^\\d+\\.\\d\\d$)|(^-\\d+\\.\\d\\d$)",
+                                "type": "string"
+                            },
+                            "accrued": {
+                                "$id": "#/properties/penalties/items/anyOf/0/properties/accrued",
+                                "pattern": "(^\\d+\\.\\d\\d$)|(^-\\d+\\.\\d\\d$)",
+                                "type": "string"
+                            },
+                            "paid": {
+                                "$id": "#/properties/penalties/items/anyOf/0/properties/paid",
+                                "pattern": "(^\\d+\\.\\d\\d$)|(^-\\d+\\.\\d\\d$)",
+                                "type": "string"
+                            },
+                            "detailPenalties": {
+                                "$id": "#/properties/penalties/items/anyOf/0/properties/detailPenalties",
+                                "type": "array",
+                                "additionalItems": true,
+                                "items": {
+                                    "$id": "#/properties/penalties/items/anyOf/0/properties/detailPenalties/items",
+                                    "anyOf": [
+                                        {
+                                            "$id": "#/properties/penalties/items/anyOf/0/properties/detailPenalties/items/anyOf/0",
+                                            "maxProperties": 8,
+                                            "required": [
+                                                "periodService",
+                                                "name",
+                                                "sumPenalties",
+                                                "isCorr"
+                                              
+                                            ],
+                                            "type": "object",
+
+                                            "if": {
+                                    "properties": {
+                                     "isCorr": {
+                                        "const": true
+                                 }
+                                         }
+                                },
+                                        "then": {
+                                            "required": [
+                                                "correctionInfo"
+                                            ]
+                                        },
+                                        "else": {
+                                            "required": [
+                                                "calculationPenalties",
+                                                "billingPayment"
+                                            ]
+                                        },
+                                            "properties": {
+                                                "periodService": {
+                                                    "$id": "#/properties/penalties/items/anyOf/0/properties/detailPenalties/items/anyOf/0/properties/periodService",
+                                                    "pattern": "^(Январь|Февраль|Март|Апрель|Май|Июнь|Июль|Август|Сентябрь|Октябрь|Ноябрь|Декабрь) (\\d\\d\\d\\d)$",
+                                                    "type": "string"
+                                                },
+                                                "billingPayment": {
+                                                    "$id": "#/properties/penalties/items/anyOf/0/properties/detailPenalties/items/anyOf/0/properties/billingPayment",
+                                                    "pattern": "(^\\d+\\.\\d\\d$)|(^-\\d+\\.\\d\\d$)",
+                                                    "type": "string"
+                                                },
+                                                "name": {
+                                                    "$id": "#/properties/penalties/items/anyOf/0/properties/detailPenalties/items/anyOf/0/properties/name",
+                                                    "type": "string"
+                                                },
+                                                "sumPenalties": {
+                                                    "$id": "#/properties/penalties/items/anyOf/0/properties/detailPenalties/items/anyOf/0/properties/sumPenalties",
+                                                    "pattern": "(^\\d+\\.\\d\\d\\d\\d$)|(^-\\d+\\.\\d\\d\\d\\d$)",
+                                                    "type": "string"
+                                                },
+                                                "isCorr": {
+                                                    "$id": "#/properties/penalties/items/anyOf/0/properties/detailPenalties/items/anyOf/0/properties/isCorr",
+                                                    "type": "boolean"        
+                                                },
+                                                
+                                                "calculationPenalties": {
+                                                    "$id": "#/properties/penalties/items/anyOf/0/properties/detailPenalties/items/anyOf/0/properties/calculationPenalties",
+                                                    "maxProperties": 6,
+                                                    "minProperties": 6,
+                                                    "maxItems": 1,
+                                                    "type": "array",
+                                                    "additionalItems": false,
+                                                    "items": {
+                                                        "$id": "#/properties/penalties/items/anyOf/0/properties/detailPenalties/items/anyOf/0/properties/calculationPenalties/items",
+                                                        "anyOf": [
+                                                            {
+                                                                "$id": "#/properties/penalties/items/anyOf/0/properties/detailPenalties/items/anyOf/0/properties/calculationPenalties/items/anyOf/0",
+                                                                "type": "object",
+                                                                "required": [
+                                                                    "unPayment",
+                                                                    "baseSum",
+                                                                    "interestRate",
+                                                                    "amountDays",
+                                                                    "dateStart",
+                                                                    "dateEnd"
+                                                                ],
+                                                                "properties": {
+                                                                    "unPayment": {
+                                                                        "$id": "#/properties/penalties/items/anyOf/0/properties/detailPenalties/items/anyOf/0/properties/calculationPenalties/items/anyOf/0/properties/unPayment",
+                                                                        "pattern": "(^\\d+\\.\\d\\d$)",
+                                                                        "type": "string"
+                                                                    },
+                                                                    "baseSum": {
+                                                                        "$id": "#/properties/penalties/items/anyOf/0/properties/detailPenalties/items/anyOf/0/properties/calculationPenalties/items/anyOf/0/properties/baseSum",
+                                                                        "pattern": "(^\\d+\\.\\d\\d$)",
+                                                                        "type": "string"
+                                                                    },
+                                                                    "interestRate": {
+                                                                        "$id": "#/properties/penalties/items/anyOf/0/properties/detailPenalties/items/anyOf/0/properties/calculationPenalties/items/anyOf/0/properties/interestRate",
+                                                                        "pattern": "(^\\d+\\.\\d+$)|(^\\d+)",
+                                                                        "type": "string"
+                                                                    },
+                                                                    "amountDays": {
+                                                                        "$id": "#/properties/penalties/items/anyOf/0/properties/detailPenalties/items/anyOf/0/properties/calculationPenalties/items/anyOf/0/properties/amountDays",
+                                                                        "pattern": "(^\\d+)",
+                                                                         "maximum": 9999,
+                                                                        "minimum": 1,
+                                                                        "type": "number"
+                                                                    },
+                                                                    "dateStart": {
+                                                                        "$id": "#/properties/penalties/items/anyOf/0/properties/detailPenalties/items/anyOf/0/properties/calculationPenalties/items/anyOf/0/properties/dateStart",
+                                                                        "pattern": "^\\d\\d\\d\\d-\\d\\d-\\d\\d$",
+                                                                        "type": "string"
+                                                                    },
+                                                                    "dateEnd": {
+                                                                        "$id": "#/properties/penalties/items/anyOf/0/properties/detailPenalties/items/anyOf/0/properties/calculationPenalties/items/anyOf/0/properties/dateEnd",
+                                                                        "pattern": "^\\d\\d\\d\\d-\\d\\d-\\d\\d$",
+                                                                        "type": "string"
+                                                                    }
+                                                                },
+                                                                "additionalProperties": false
+                                                            }
+                                                        ]
+                                                    }
+                                                },
+                                                "repayment": {
+                                                    "$id": "#/properties/penalties/items/anyOf/0/properties/detailPenalties/items/anyOf/0/properties/repayment",
+                                                    "type": "array",
+                                                    "maxItems": 1,
+                                                    "additionalItems": false,
+                                                    "items": {
+                                                        "$id": "#/properties/penalties/items/anyOf/0/properties/detailPenalties/items/anyOf/0/properties/repayment/items",
+                                                        "anyOf": [
+                                                            {
+                                                                "$id": "#/properties/penalties/items/anyOf/0/properties/detailPenalties/items/anyOf/0/properties/repayment/items/anyOf/0",
+                                                                "maxProperties": 2,
+                                                                "required": [
+                                                                    "paid",
+                                                                    "paidDate"
+                                                                ],
+                                                                "minProperties": 2,
+                                                                "type": "object",
+                                                                "properties": {
+                                                                    "paid": {
+                                                                        "$id": "#/properties/penalties/items/anyOf/0/properties/detailPenalties/items/anyOf/0/properties/repayment/items/anyOf/0/properties/paid",
+                                                                        "pattern": "(^\\d+\\.\\d\\d$)",
+                                                                        "type": "string"
+                                                                    },
+                                                                    "paidDate": {
+                                                                        "$id": "#/properties/penalties/items/anyOf/0/properties/detailPenalties/items/anyOf/0/properties/repayment/items/anyOf/0/properties/paidDate",
+                                                                        "pattern": "^\\d{4}-\\d\\d-\\d\\d[T]\\d\\d\\:\\d\\d\\:\\d\\d[+]\\d\\d\\:\\d\\d$",
+                                                                        "type": "string"
+                                                                    }
+                                                                },
+                                                                "additionalProperties": false
+                                                            }
+                                                        ]
+                                                    }
+                                                },
+                                                "correctionInfo": {
+                                                    "$id": "#/properties/penalties/items/anyOf/0/properties/detailPenalties/items/anyOf/0/properties/correctionInfo",
+                                                    "required": [
+                                                        "dateCorr"
+                                                    ],
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "reason": {
+                                                            "$id": "#/properties/penalties/items/anyOf/0/properties/detailPenalties/items/anyOf/0/properties/correctionInfo/properties/reason",
+                                                            "type": "string"
+                                                        },
+                                                        "dateCorr": {
+                                                            "$id": "#/properties/penalties/items/anyOf/0/properties/detailPenalties/items/anyOf/0/properties/correctionInfo/properties/dateCorr",
+                                                            "pattern": "^\\d\\d\\d\\d-\\d\\d-\\d\\d$",
+                                                            "type": "string"
+                                                        },
+                                                        "author": {
+                                                            "$id": "#/properties/penalties/items/anyOf/0/properties/detailPenalties/items/anyOf/0/properties/correctionInfo/properties/author",
+                                                            "type": "string"
+                                                        }
+                                                    },
+                                                    "additionalProperties": false
+                                                }
+                                            },
+                                            "additionalProperties": false
+                                        }
+                                    ]
+                                }
+                            }
+                        },
+                        "additionalProperties": false
+                    }
+                ]
+            }
+        }
+    },
+    "additionalProperties": false
+
+
+

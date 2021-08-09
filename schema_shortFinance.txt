@@ -1,0 +1,62 @@
+{
+    "$ref": "#/definitions/Short",
+    "definitions": {
+        "Short": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "currentBalance": {
+                    "type": "string"
+                },
+                "currentPayment": {
+                    "type": "string"
+                },
+                "lastPayment": {
+                    "$ref": "#/definitions/LastPayment"
+                },
+               "garantPayment": {
+                    "type": ["string","null"]
+                },
+                "garantPaymentDate": {
+                    "type": ["string","null"]
+                },
+                
+                "billingPayment": {
+                    "type": "string"
+                },
+                "billingPaymentTerm": {
+                    "type": "string",
+                    "format": "date-time"
+                }
+            },
+            "required": [
+                "billingPayment",
+                "billingPaymentTerm",
+                "currentBalance",
+                "currentPayment",
+                "garantPayment",
+                "garantPaymentDate",
+                "lastPayment"
+            ],
+            "title": "Short"
+        },
+        "LastPayment": {
+            "type": ["object","null"],
+            "additionalProperties": false,
+            "properties": {
+                "lastPaymentValue": {
+                    "type": "string"
+                },
+                "lastPaymentDate": {
+                    "type": "string",
+                    "format": "date-time"
+                }
+            },
+            "required": [
+                "lastPaymentDate",
+                "lastPaymentValue"
+            ],
+            "title": "LastPayment"
+        }
+    }
+}

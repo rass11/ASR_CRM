@@ -1,0 +1,86 @@
+{
+    "$id": "http://example.com/example.json",
+    "type": "object",
+    "required": [
+        "blockingData"
+    ],
+    "properties": {
+        "blockingData": {
+            "$id": "#/properties/blockingData",
+            "type": "array",
+            "additionalItems": true,
+            "items": {
+                "$id": "#/properties/blockingData/items",
+                "anyOf": [
+                    {
+                        "$id": "#/properties/blockingData/items/anyOf/0",
+                        "maxProperties": 11,
+                        "minProperties": 4,
+                        "required": [
+                            "blockType",
+                            "dateStart",
+                            "status",
+                            "serviceExtId"
+                       
+                        ],
+                        "type": "object",
+                        "properties": {
+                            "reason": {
+                                "$id": "#/properties/blockingData/items/anyOf/0/properties/reason",
+                                "type": "string"
+                            },
+                            "blockType": {
+                                "$id": "#/properties/blockingData/items/anyOf/0/properties/blockType",
+                                "type": "string",
+                                "enum": ["FINANCE","VOLUNTARY","GENTLE","LONG"]
+                            },
+                            "dateStart": {
+                                "$id": "#/properties/blockingData/items/anyOf/0/properties/dateStart",
+                                "type": "string",
+                                "pattern": "^\\d{4}-\\d\\d-\\d\\d[T]\\d\\d\\:\\d\\d\\:\\d\\d[+]\\d\\d\\:\\d\\d$"
+
+                            },
+                            "dateEnd": {
+                                "$id": "#/properties/blockingData/items/anyOf/0/properties/dateEnd",
+                                "type": "string",
+                                "pattern": "^\\d{4}-\\d\\d-\\d\\d[T]\\d\\d\\:\\d\\d\\:\\d\\d[+]\\d\\d\\:\\d\\d$"
+                            },
+                            "status": {
+                                "$id": "#/properties/blockingData/items/anyOf/0/properties/status",
+                                "type": "string",
+                                "enum": ["ACTIVE","CLOSED","ORDERED"]
+                            },
+                            "periodName": {
+                                "$id": "#/properties/blockingData/items/anyOf/0/properties/periodName",
+                                "type": "string"
+                            },
+                            "serviceExtId": {
+                                "$id": "#/properties/blockingData/items/anyOf/0/properties/serviceExtId",
+                                "type": "string"
+                            },
+                            "resource": {
+                                "$id": "#/properties/blockingData/items/anyOf/0/properties/resource",
+                                "type": "string"
+                            },
+                            "periodSum": {
+                                "$id": "#/properties/blockingData/items/anyOf/0/properties/periodSum",
+                                "type": "string",
+                                "pattern": "(^\\d+\\.\\d\\d$)|(^-\\d+\\.\\d\\d$)"
+                            },
+                            "daysUsed": {
+                                "$id": "#/properties/blockingData/items/anyOf/0/properties/daysUsed",
+                                "type": "integer"
+                            },
+                            "daysLeft": {
+                                "$id": "#/properties/blockingData/items/anyOf/0/properties/daysLeft",
+                                "type": "integer"
+                            }
+                        },
+                        "additionalProperties": true
+                    }
+                ]
+            }
+        }
+    },
+    "additionalProperties": true
+}
