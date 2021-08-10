@@ -22,15 +22,19 @@ def t2():
 
 @pytest.mark.parametrize("extid, result",[(ext,200) for ext in t2()])
 def test_import_200(extid,result):
+    reqid = ASR_config.hex_uuid()
     response = main(extid)
-    with open("data_promise-payment_SIB_NSK_1307_2.txt", "a") as file:
+    with open("data_promise-payment_SIB_NSK_1008.txt", "a") as file:
 
         #r=response.json()
         #r2 = r[1:0]
         a = json.dumps({extid:response.json()},ensure_ascii=False)
         b = a[1:-1]
-        c=str(response.elapsed.total_seconds())
-        file.write(c+b+',')
+        time = str(response.elapsed.total_seconds())
+
+        request_id = reqid
+
+        file.write(str(request_id) + " / resptime : " + time + " / " + " / extid : " + b + ',')
         file.write('\n')
     # assert response.status_code == result
     print(response)

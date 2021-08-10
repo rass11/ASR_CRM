@@ -18,7 +18,7 @@ SAPRP_SZT_ALL = 'http://10.42.122.25/apiman-gateway/adapters/saprp-plsql-adapter
 SAPRP_URL_ALL = 'http://10.42.122.25/apiman-gateway/adapters/saprp-plsql-adapter-url/1.0-test/v1/finAccounts/'
 
 VLG_CHV_rest = 'http://10.42.122.25/apiman-gateway/adapters/start-rest-adapter-vlg-chv/1.0-test/v1/finAccounts/'
-SIB_NSK_rest = 'http://10.42.122.25/apiman-gateway/adapters/start-rest-adapter-sib-nsk/1.0-test/v1/finAccounts/'
+SIB_NSK_rest = 'http://10.42.122.25/apiman-gateway/adapters/start-rest-adapter-sib-nsk/1.0-dev/v1/finAccounts/'
 DSV_PRM_rest = 'http://10.42.122.25/apiman-gateway/adapters/start-rest-adapter-dsv-prm/1.0-test/v1/finAccounts/'
 
 params_date_1 = [{

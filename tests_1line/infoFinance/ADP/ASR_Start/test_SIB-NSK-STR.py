@@ -45,7 +45,7 @@ def test_date_200(extid,param):
 
     response = main(extid, param, )
 
-    with open("data_calculations_START_SIB_NSK_STR_2007_psi.txt", "a") as file:
+    with open("data_calculations_START_SIB_NSK_STR_1008_psi.txt", "a") as file:
         # r=response.json()
         # r2 = r[1:0]
         err_message = ''
